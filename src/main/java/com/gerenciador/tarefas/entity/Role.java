@@ -1,5 +1,6 @@
 package com.gerenciador.tarefas.entity;
 
+import com.gerenciador.tarefas.permissions.RoleEnum;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -22,7 +23,8 @@ public class Role implements Serializable {
     private Long id;
 
     @Column(unique = true, length = 20)
-    private String name;
+    @Enumerated(EnumType.STRING)
+    private RoleEnum name;
 
     @ManyToMany(mappedBy = "roles")
     private List<Usu> users;
