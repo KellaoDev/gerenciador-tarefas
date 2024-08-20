@@ -24,7 +24,8 @@ public class Usu implements Serializable {
     @Column(unique = true, length = 50)
     private String username;
 
-    @Column(length = 50)
+    @Column(length = 150)
+    //the password has to be longer, because of its encryption.
     private String password;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

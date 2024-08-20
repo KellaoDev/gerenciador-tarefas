@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -17,13 +16,15 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public ResponseEntity<Usu> saveUser(@RequestBody Usu user) {
-        return new ResponseEntity<>(userService.saveUser(user), HttpStatus.CREATED);
+    public ResponseEntity<String> saveUser(@RequestBody Usu user) {
+        Usu usuSave = userService.saveUser(user);
+        return new ResponseEntity<>("New user create " + usuSave.getUsername(), HttpStatus.CREATED);
     }
 
     @PutMapping
-    public void updateUser(@RequestBody Usu user) {
-        userService.updateUser(user);
+    public ResponseEntity<String> updateUser(@RequestBody Usu user) {
+        Usu usuSave = userService.saveUser(user);
+        return new ResponseEntity<>("New user create " + usuSave.getUsername(), HttpStatus.CREATED);
     }
 
     @GetMapping
