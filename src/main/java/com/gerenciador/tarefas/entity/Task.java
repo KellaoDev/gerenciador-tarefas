@@ -2,10 +2,7 @@ package com.gerenciador.tarefas.entity;
 
 import com.gerenciador.tarefas.status.TaskStatusEnum;
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -19,6 +16,8 @@ import java.time.LocalTime;
 @Getter
 @Setter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 
 public class Task implements Serializable {
 
@@ -49,6 +48,5 @@ public class Task implements Serializable {
     @Column
     @UpdateTimestamp
     private LocalTime dateUpdate;
-    @Column
-    private LocalTime timeTaken;
+
 }
