@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -35,14 +36,19 @@ public class UserService {
     }
 
     //update user in the database with password encrypted
-    public void updateUser(Usu user) {
+    public Usu updateUser(Usu user) {
         user.setRoles(user.getRoles()
                 .stream()
                 .map(role -> IRoleRepository.findByName(role.getName()))
                 .toList());
         
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        this.IUserRepository.save(user);
+        return this.IUserRepository.save(user);
+    }
+
+    //FindUserById in database
+    public Optional<Usu> findUserById(Long userId) {
+        return this.IUserRepository.findById(userId);
     }
 
     //delete user by id in the database

@@ -23,8 +23,8 @@ public class UserController {
 
     @PutMapping
     public ResponseEntity<String> updateUser(@RequestBody Usu user) {
-        Usu usuSave = userService.saveUser(user);
-        return new ResponseEntity<>("New user create " + usuSave.getUsername(), HttpStatus.CREATED);
+        Usu usuSave = userService.updateUser(user);
+        return new ResponseEntity<>("New user update " + usuSave.getUsername(), HttpStatus.CREATED);
     }
 
     @GetMapping

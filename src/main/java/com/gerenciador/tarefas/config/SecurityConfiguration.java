@@ -47,6 +47,7 @@ public class SecurityConfiguration {
                             .requestMatchers(HttpMethod.GET, "/teste-api-bem-vindo").hasAuthority(RoleEnum.ADMIN.toString())
                             .requestMatchers(HttpMethod.GET, "/users").hasAuthority(RoleEnum.USER.toString())
                             .requestMatchers(HttpMethod.POST, "/users").hasAuthority(RoleEnum.ADMIN.toString())
+                            .requestMatchers(HttpMethod.POST, "/task-manager").hasAuthority(RoleEnum.ADMIN.toString())
                             .anyRequest()
                             .authenticated();
                 });
